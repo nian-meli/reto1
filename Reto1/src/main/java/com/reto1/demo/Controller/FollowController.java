@@ -10,7 +10,6 @@ import com.reto1.demo.Model.DTO.UserObjets.UserDTOFolloweds;
 import com.reto1.demo.Model.DTO.UserObjets.UserDTOFollowers;
 import com.reto1.demo.Model.DTO.UserObjets.UserRequest;
 import com.reto1.demo.Service.IFollowService;
-import com.reto1.demo.Service.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +20,6 @@ public class FollowController {
 
     @Autowired
     IFollowService iFollowService;
-
-    @Autowired
-    IPostService iPostService;
 
     /**
      *

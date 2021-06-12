@@ -5,7 +5,7 @@ import com.reto1.demo.Exception.PostException.DateNotExistException;
 import com.reto1.demo.Exception.PostException.DuplicatedPostException;
 import com.reto1.demo.Exception.UserException.UserIdNotFoundException;
 import com.reto1.demo.Exception.UserException.UserNotFollowException;
-import com.reto1.demo.Model.DTO.Mapper.PostMapper;
+import com.reto1.demo.Model.DTO.Mapper.IPostMapper;
 import com.reto1.demo.Model.DTO.PostObjects.LastPostDTO;
 import com.reto1.demo.Model.DTO.PostObjects.PromoPostCount;
 import com.reto1.demo.Model.DTO.UserObjets.UserPromoPostListDTO;
@@ -25,6 +25,9 @@ public class PostService implements IPostService{
 
     @Autowired
     IFollowRepository iFollowRepository;
+
+    @Autowired
+    IPostMapper postMapper;
 
     /**
     * Create post and Promopost
@@ -64,7 +67,7 @@ public class PostService implements IPostService{
         ArrayList<Post> recentPost = recent(user, last2Weeks);
         //Order by date, more recent first
         Util.orderDescByDate(recentPost);
-        return PostMapper.toLastPostDTO(user,recentPost);
+        return postMapper.toLastPostDTO(user,recentPost);
     }
 
     /**
@@ -88,7 +91,7 @@ public class PostService implements IPostService{
     @Override
     public UserPromoPostListDTO listPromoPost(int userId) throws UserNotFollowException, UserIdNotFoundException {
         User user = iFollowRepository.getUserById(userId);
-        return PostMapper.toPromoPostDTO(user);
+        return postMapper.toPromoPostDTO(user);
     }
 
     /**
@@ -98,7 +101,7 @@ public class PostService implements IPostService{
     @Override
     public PromoPostCount countPromoPost(int userId) throws UserNotFollowException, UserIdNotFoundException {
         User user = iFollowRepository.getUserById(userId);
-        return PostMapper.toPromoPostCountMapper(user);
+        return postMapper.toPromoPostCountMapper(user);
     }
 
 
