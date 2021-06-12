@@ -4,7 +4,9 @@ package com.reto1.demo.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -12,9 +14,9 @@ import java.util.ArrayList;
 public class User implements IUser {
     int id;
     String name;
-    ArrayList<User> followers = new ArrayList<>();
-    ArrayList<User> followed = new ArrayList<>();
-    ArrayList<Post> posts = new ArrayList<>();
+    List<User> followers = new ArrayList<>();
+    List<User> followed = new ArrayList<>();
+    List<Post> posts = new ArrayList<>();
 
     public User(int id, String name){
         this.id = id;

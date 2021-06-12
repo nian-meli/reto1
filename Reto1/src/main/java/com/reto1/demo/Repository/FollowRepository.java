@@ -12,7 +12,7 @@ import java.util.HashMap;
 @Service
 public class FollowRepository implements IFollowRepository {
 
-    static HashMap<Integer, User> dataUsers = new HashMap<>();
+    static HashMap<Integer, User> dataUsers = new HashMap<Integer, User>();
 
     static {
         User u1 = new User(1569, "Construcciones SAS" );

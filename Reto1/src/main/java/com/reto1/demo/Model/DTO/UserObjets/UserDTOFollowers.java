@@ -1,16 +1,19 @@
 package com.reto1.demo.Model.DTO.UserObjets;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTOFollowers{
-    int userId;
-    String userName;
-    ArrayList<UserDTO> followers;
+    @JsonProperty("userId")
+    int id;
+    @JsonProperty("userName")
+    String name;
+    List<UserDTO> followers;
 }

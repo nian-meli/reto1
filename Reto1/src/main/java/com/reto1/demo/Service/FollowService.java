@@ -5,7 +5,7 @@ import com.reto1.demo.Exception.UserException.SameIdException;
 import com.reto1.demo.Exception.UserException.UserAlreadyFollowException;
 import com.reto1.demo.Exception.UserException.UserIdNotFoundException;
 import com.reto1.demo.Exception.UserException.UserNotFollowException;
-import com.reto1.demo.Model.DTO.Mapper.UserMapper;
+import com.reto1.demo.Model.DTO.Mapper.IUserMapper;
 import com.reto1.demo.Model.DTO.UserObjets.UserDTOCount;
 import com.reto1.demo.Model.DTO.UserObjets.UserDTOFolloweds;
 import com.reto1.demo.Model.DTO.UserObjets.UserDTOFollowers;
@@ -21,6 +21,8 @@ public class FollowService implements IFollowService{
 
     @Autowired
     IFollowRepository iFollowRepository;
+    @Autowired
+    IUserMapper iUserMapper;
 
     /**
      * Follow other user
@@ -49,7 +51,7 @@ public class FollowService implements IFollowService{
      */
     @Override
     public UserDTOCount countFollowers(int userId) throws UserIdNotFoundException, UserNotFollowException {
-        return UserMapper.toUserCount(iFollowRepository.getUserById(userId));
+        return iUserMapper.toUserCount(iFollowRepository.getUserById(userId));
     }
 
     /**
@@ -63,7 +65,7 @@ public class FollowService implements IFollowService{
      */
     @Override
     public UserDTOFollowers getFollowers(int userId) throws UserIdNotFoundException, UserNotFollowException {
-        return UserMapper.toUserFollowers(iFollowRepository.getUserById(userId));
+        return iUserMapper.toUserFollowers(iFollowRepository.getUserById(userId));
     }
 
     /**
@@ -75,7 +77,7 @@ public class FollowService implements IFollowService{
      */
     @Override
     public UserDTOFolloweds getFolloweds(int userId) throws UserIdNotFoundException, UserNotFollowException {
-        return UserMapper.toUserFolloweds(iFollowRepository.getUserById(userId));
+        return iUserMapper.toUserFolloweds(iFollowRepository.getUserById(userId));
     }
 
     /**

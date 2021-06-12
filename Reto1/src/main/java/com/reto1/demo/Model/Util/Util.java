@@ -2,24 +2,23 @@ package com.reto1.demo.Model.Util;
 
 
 import com.reto1.demo.Model.DTO.PostObjects.PostDTO;
-import com.reto1.demo.Model.Post;
 import com.reto1.demo.Model.DTO.UserObjets.UserDTO;
+import com.reto1.demo.Model.Post;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 public class Util{
 
-    public static void orderAscByUserName(ArrayList<UserDTO> users) {
+    public static void orderAscByUserName(List<UserDTO> users) {
         Comparator<UserDTO> c = (u1, u2) -> u1.getName().compareTo(u2.getName());
         users.sort(c);
     }
 
-    public static void orderDescByUserName(ArrayList<UserDTO> users) {
+    public static void orderDescByUserName(List<UserDTO> users) {
         Comparator<UserDTO> c = (u1, u2) -> u2.getName().compareTo(u1.getName());
         users.sort(c);
     }
