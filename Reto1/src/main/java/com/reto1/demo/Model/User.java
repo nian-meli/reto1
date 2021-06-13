@@ -1,6 +1,7 @@
 package com.reto1.demo.Model;
 
 
+import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements IUser {
+    @ApiParam(value = "User id to follow",   example = "1570")
     int id;
     String name;
     List<User> followers = new ArrayList<>();

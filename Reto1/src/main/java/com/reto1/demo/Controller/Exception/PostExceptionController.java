@@ -1,4 +1,4 @@
-package com.reto1.demo.Controller;
+package com.reto1.demo.Controller.Exception;
 
 import com.reto1.demo.Exception.PostException.DuplicatedPostException;
 import com.reto1.demo.Model.DTO.ErrorDTO;

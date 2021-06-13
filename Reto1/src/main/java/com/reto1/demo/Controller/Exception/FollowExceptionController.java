@@ -1,4 +1,4 @@
-package com.reto1.demo.Controller;
+package com.reto1.demo.Controller.Exception;
 
 import com.reto1.demo.Exception.GeneralException;
 import com.reto1.demo.Exception.UserException.UserAlreadyFollowException;

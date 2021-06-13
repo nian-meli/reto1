@@ -1,4 +1,4 @@
-package com.reto1.demo.Controller;
+package com.reto1.demo.Controller.Controller;
 
 import com.reto1.demo.Exception.OrderNotFoundException;
 import com.reto1.demo.Exception.PostException.DateNotExistException;
