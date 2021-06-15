@@ -28,17 +28,11 @@ public interface IPostMapper {
             @Mapping(source = "user.posts", target = "promoproductscount", qualifiedByName = "promoPostCount")})
     PromoPostCount toPromoPostCountMapper(User user);
 
-    @Named("promoPostCount")
-    default int promoPostCount(List<Post> posts){
-        return (int) posts.stream().filter(post -> post instanceof PromoPost).count();
-    }
-
     @Mappings({
       @Mapping(source = "user.id", target = "userId"),
           @Mapping(source = "recentPost", target = "posts", qualifiedByName = "postDTOList")
   })
      LastPostDTO toLastPostDTO(User user, ArrayList<Post> recentPost);
-
 
     @Mapping(source = "user.posts", target = "posts", qualifiedByName = "promoPostList")
     UserPromoPostListDTO toPromoPostDTO(User user);
@@ -54,6 +48,12 @@ public interface IPostMapper {
     default List promoPostList(List<Post> posts){
         return posts.stream().filter(post -> post instanceof PromoPost).
                             map(promoPost -> toPromoPostDTO((PromoPost) promoPost)).collect(Collectors.toList());
+    }
+
+
+    @Named("promoPostCount")
+    default int promoPostCount(List<Post> posts){
+        return (int) posts.stream().filter(post -> post instanceof PromoPost).count();
     }
 
 

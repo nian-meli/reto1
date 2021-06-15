@@ -17,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@Api(value = "Api users")
 @RestController
 public class FollowController {
 
@@ -25,9 +24,10 @@ public class FollowController {
     IFollowService iFollowService;
 
     @PostMapping("/users/{userId}/follow/{userIdToFollow}")
-    @ApiOperation("Follow user")
-    @ApiResponses({ @ApiResponse(code=200, message = "Ok" , examples = @Example(value = {@ExampleProperty( mediaType = "*/*" , value = "Following to Nicoll")})),
-                    @ApiResponse(code=400, message="Bad request")})
+    @ApiOperation("Follow user by id")
+    @ApiResponses({ @ApiResponse(code=200, message = "The user was follow",
+                    examples = @Example(value = {@ExampleProperty( mediaType = "*/*" , value = "Following to UserName")})),
+                    @ApiResponse(code=400, message="The user wasnt follow, there")})
     public ResponseEntity<String> followOtherUser(@ApiParam(value = "User id that follow", example = "1235") @PathVariable int userId,
                                                   @ApiParam(value = "User id to follow",   example = "1570") @PathVariable int userIdToFollow)
             throws UserAlreadyFollowException, UserIdNotFoundException, SameIdException {

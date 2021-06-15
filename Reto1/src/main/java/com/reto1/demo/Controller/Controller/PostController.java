@@ -34,15 +34,15 @@ public class PostController {
 
     /**
      *
-     * @param userId
-     * @param order
+     * @param userId   Este es el id del usuario
+     * @param order    Order es el orden de consulta asc y desc
      * @return LastPostDTO (Recent posts and promo post order default asc)
      * @throws UserIdNotFoundException
      * @throws UserNotFollowException
      * @throws OrderNotFoundException
      */
     @GetMapping("/products/followed/{userId}/list")
-    public ResponseEntity<LastPostDTO> lastPosts(@PathVariable int userId,
+        public ResponseEntity<LastPostDTO> lastPosts(@PathVariable int userId,
                                                  @RequestParam(required = false, defaultValue = "date_desc") String order)
             throws UserIdNotFoundException, UserNotFollowException, OrderNotFoundException {
         return new ResponseEntity<>(iPostService.orderLastPost(userId, order), HttpStatus.OK);
